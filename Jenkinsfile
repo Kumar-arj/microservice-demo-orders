@@ -26,7 +26,7 @@ spec:
             cleanWs()
         }
         stage('Checkout SCM') {
-            git credentialsId: 'git', url: 'https://github.com/Kumar-arj/microservice-demo-order.git', branch: 'master'
+            git credentialsId: 'git', url: 'https://github.com/Kumar-arj/microservice-demo-orders.git', branch: 'master'
             container('build') {
                 stage('Build a Maven project') {
                     sh 'mvn -DskipTests clean package'
