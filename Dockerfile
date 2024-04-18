@@ -1,10 +1,6 @@
-FROM weaveworksdemos/msd-java:jre-latest
+FROM openjdk:8u191-jdk-alpine
 
 WORKDIR /usr/src/app
-COPY target/*.jar ./app.jar
+COPY ./target/*.jar ./app.jar
 
-RUN	chown -R ${SERVICE_USER}:${SERVICE_GROUP} ./app.jar
-
-USER ${SERVICE_USER}
-
-ENTRYPOINT ["/usr/local/bin/java.sh","-jar","./app.jar", "--port=80"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/urandom","-jar","./app.jar"]
