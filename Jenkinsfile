@@ -82,8 +82,10 @@ spec:
                 container('docker') {
                     stage('Build Image') {
                         docker.withRegistry( 'https://registry.hub.docker.com', 'dockerhub' ) {
-                            def customImage = docker.build('kumararj/sock-shop-micro-services-order:latest')
+                            def customImage = docker.build("kumararj/sock-shop-micro-services-payment:${BUILD_NUMBER}")
                             customImage.push()
+                            def finalImage = docker.build('kumararj/sock-shop-micro-services-order:latest')
+                            finalImage.push()
                         }
                     }
                 }
