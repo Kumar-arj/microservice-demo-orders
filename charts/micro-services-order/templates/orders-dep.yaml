@@ -23,7 +23,7 @@ spec:
       - name: orders
         image: {{if .Values.global.registry}}{{ .Values.global.registry }}/{{end}}{{ .Values.orders.image.repo }}:{{ .Values.orders.image.tag }}
         command:
-        - /usr/local/bin/java.sh
+        - java
         - -jar
         - ./app.jar
         - --port={{ .Values.orders.containerPort }}
